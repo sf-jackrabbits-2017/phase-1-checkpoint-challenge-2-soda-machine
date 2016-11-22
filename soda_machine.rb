@@ -18,7 +18,7 @@ class SodaMachine
     # A soda machine will be able to find a single soda with a given brand. This method will be called 
     @sodas.each do |sodas|
       p sodas
-    if value == soda_brand
+    if sodas == soda_brand
       sodas
     
     else nil 
