@@ -23,7 +23,6 @@ class SodaMachine
       soda = find_soda(soda_brand)
       @cash += soda.price
       @sodas.delete(soda)
-      true
     else
       "cannot sell any more soda"
       nil
