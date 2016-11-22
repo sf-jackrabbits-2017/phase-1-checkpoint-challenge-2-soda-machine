@@ -12,10 +12,7 @@ class SodaMachine
 
 
   def find_soda(soda_brand)
-    soda_location = @sodas.find_index{|soda| soda.brand == soda_brand }
-    if soda_location.is_a? Integer
-      @sodas[soda_location]
-    end
+      @sodas.find{ |soda| soda.brand == soda_brand }
   end
 
   def sell(soda_brand)
