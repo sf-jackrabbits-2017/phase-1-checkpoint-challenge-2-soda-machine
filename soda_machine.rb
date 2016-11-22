@@ -25,7 +25,7 @@ class SodaMachine
 
   #get the instance of soda_brand that was deleted and get the cost of that soda and add it the cash array
   def cash
-    @soda
+    @soda 
   end
 
   #Check each element within the array.
