@@ -22,6 +22,8 @@ class SodaMachine
   end
 
   def sell(soda_brand)
+    nil unless
+      @sodas.include?(soda_brand)
   end
 
 end
