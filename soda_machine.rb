@@ -13,13 +13,18 @@ class SodaMachine
   end
 
   def find_soda(soda_brand)
-    @sodas.select{|num| num = soda_brand}
+    @sodas.find{|num| num.brand == soda_brand}
   end
 
   def sell(soda_brand)
-
+    if find_soda(soda_brand)
+      find_soda(soda_brand)
+      @cash = @cash + soda.price
+      @soda.delete(soda)
+    else
+      "no soda available!"
+      nil
   end
-
 end
 
 # arr_soda =
