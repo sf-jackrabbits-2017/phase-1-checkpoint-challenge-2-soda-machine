@@ -7,12 +7,16 @@ class SodaMachine
   end
 
   def current_inventory_count
+    @sodas.length
   end
 
   def find_soda(soda_brand)
+    @sodas.find do |soda| soda.brand == soda_brand
+    end
   end
 
   def sell(soda_brand)
+
   end
 
 end
