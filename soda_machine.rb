@@ -11,30 +11,15 @@ class SodaMachine
   end
 
   def find_soda(soda_brand)
-    @sodas.each do |brand|
-      if @sodas == brand
-        p brand.parameterize.underscore.to_sym
-        #puts "#{soda_brand}"
-      else
-        puts "Sorry, the soda you requested is not available."
-        return nil
-      end
-    end
+    brand_array = @sodas.select {|soda| soda.brand == soda_brand}
+    brand_array.first
   end
 
   def sell(soda_brand)
-    @sodas.each do |brand|
-      if @sodas != brand
-        puts "Sorry, the soda you requested is not available."
-        return nil
-      else
-        @sodas.has_value?(brand)
-        puts "#{soda_brand}"
-        @cash[@soda] = @price
-        sum = 0
-        @cash.each { |key, value| sum += value.last }
-        @sodas.delete(brand)
-      end
+    sold_soda = find_soda(soda_brand)
+    if sold_soda != nil
+       @cash += sold_soda.price
+       @sodas.delete(sold_soda)
     end
   end
 end
