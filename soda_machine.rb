@@ -20,9 +20,15 @@ class SodaMachine < Soda #--> SodaMachine is under Soda class
   end	#    Why can't we return nil in else condition inside each iterator?
 
   def sell(soda_brand)
-    @sold_soda = self[:sodas].key(soda_brand) #--> Based on previous method, which I didn't have time to finish
-    purchased_soda_price = self[]
-  end
+    @sodas.each do |soda|
+    	if soda.brand == soda_brand # If there's a soda that corresponds with the brand being called for
+    		@cash += soda.price		#    add price of soda sold to cash,
+    		@sodas.delete(soda)		#       remove soda from soda machine,
+    		return soda 			#          and return the sold soda
+    	end
+    end
+    nil # Why do we have to put nil outside of iterator for it to work?
+  end   #    Why can't we return nil in else condition inside each iterator?
 
 end
 
