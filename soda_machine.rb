@@ -1,4 +1,4 @@
-class SodaMachine < Soda #--> SodaMachine is under Soda class
+class SodaMachine
   attr_reader :sodas, :cash
 
   def initialize(args = {})
@@ -11,24 +11,16 @@ class SodaMachine < Soda #--> SodaMachine is under Soda class
   end
 
   def find_soda(soda_brand)
-    @sodas.each do |soda|         # Iterate through each soda instance and
-      if soda.brand == soda_brand #    determine if there's a soda that
-      	return soda 			  #       corresponds with the brand being called for
-      end
-    end
-  	nil # Why do we have to put nil outside of iterator for it to work?
-  end	#    Why can't we return nil in else condition inside each iterator?
+    @sodas.find { |soda| soda.brand == soda_brand }
+  end
 
   def sell(soda_brand)
-    @sodas.each do |soda|
-    	if soda.brand == soda_brand # If there's a soda that corresponds with the brand being called for
-    		@cash += soda.price		#    add price of soda sold to cash,
-    		@sodas.delete(soda)		#       remove soda from soda machine,
-    		return soda 			#          and return the sold soda
-    	end
-    end
-    nil # Why do we have to put nil outside of iterator for it to work?
-  end   #    Why can't we return nil in else condition inside each iterator?
-
+    soda = find_soda(soda_brand)
+      if soda
+        @cash += soda.price
+        @sodas.delete(soda)
+      else
+        nil
+      end
+  end
 end
-
